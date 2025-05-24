@@ -191,8 +191,166 @@ function App() {
 export default App;
 
 ```
+# App.css
+```
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  background: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.balance h3 {
+  margin: 0;
+  color: #666;
+}
+
+.balance h1 {
+  margin: 10px 0;
+  font-size: 2rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.income, .expense {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.money {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.plus {
+  color: green;
+}
+
+.minus {
+  color: red;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-right: 5px solid;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.list li.plus {
+  border-color: green;
+}
+
+.list li.minus {
+  border-color: red;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+  .container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .summary {
+    flex-direction: column;
+  }
+
+  .income, .expense {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+
+```
 ## OUTPUT
+
+![web1 245](https://github.com/user-attachments/assets/1caf30e4-cbc5-417b-babd-6cd7832c244e)
+![web2 245](https://github.com/user-attachments/assets/bdf3f03a-0553-41b5-bba0-b55558aa6a2a)
 
 
 ## RESULT
