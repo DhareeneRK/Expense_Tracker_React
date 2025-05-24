@@ -1,5 +1,5 @@
 # Expense Tracker (ReactJS)
-## Date:
+## Date:24/05/25
 
 ## AIM
 To develop a simple Expense Tracker application using React that allows users to manage their personal finances by adding, viewing, and deleting income and expense transactions, while dynamically calculating the current balance, total income, and total expenses.
@@ -82,7 +82,115 @@ Form inputs
 Transaction list (with color coding)
 
 ## PROGRAM
+# App.js
+```
+import React, { useState } from 'react';
+import './App.css';
 
+function App() {
+  const [transactions, setTransactions] = useState([]);
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+
+  const addTransaction = (e) => {
+    e.preventDefault();
+    if (!description || !amount) return;
+
+    const newTransaction = {
+      id: Date.now(),
+      description,
+      amount: parseFloat(amount)
+    };
+    setTransactions([newTransaction, ...transactions]);
+    setDescription('');
+    setAmount('');
+  };
+
+  const deleteTransaction = (id) => {
+    setTransactions(transactions.filter(tx => tx.id !== id));
+  };
+
+  const getBalance = () => {
+    return transactions.reduce((acc, tx) => acc + tx.amount, 0).toFixed(2);
+  };
+
+  const getIncome = () => {
+    return transactions
+      .filter(tx => tx.amount > 0)
+      .reduce((acc, tx) => acc + tx.amount, 0)
+      .toFixed(2);
+  };
+
+  const getExpenses = () => {
+    return transactions
+      .filter(tx => tx.amount < 0)
+      .reduce((acc, tx) => acc + tx.amount, 0)
+      .toFixed(2);
+  };
+
+  return (
+    <div className="container">
+      <h2>Expense Tracker</h2>
+
+      <div className="balance">
+        <h3>Your Balance</h3>
+        <h1>${getBalance()}</h1>
+      </div>
+
+      <div className="summary">
+        <div className="income">
+          <h4>Income</h4>
+          <p className="money plus">${getIncome()}</p>
+        </div>
+        <div className="expense">
+          <h4>Expense</h4>
+          <p className="money minus">${Math.abs(getExpenses())}</p>
+        </div>
+      </div>
+
+      <form onSubmit={addTransaction}>
+        <h3>Add New Transaction</h3>
+        <div className="form-control">
+          <label>Description</label>
+          <input
+            type="text"
+            placeholder="Enter description..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <label>Amount (positive = income, negative = expense)</label>
+          <input
+            type="number"
+            placeholder="Enter amount..."
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </div>
+        <button className="btn">Add Transaction</button>
+      </form>
+
+      <h3>Transaction History</h3>
+      <ul className="list">
+        {transactions.map(tx => (
+          <li key={tx.id} className={tx.amount > 0 ? 'plus' : 'minus'}>
+            {tx.description}
+            <span>${tx.amount.toFixed(2)}</span>
+            <button className="delete-btn" onClick={() => deleteTransaction(tx.id)}>x</button>
+          </li>
+        ))}
+      </ul>
+        <footer className="footer">
+          <p>Dhareene R K (212222040035)</p>
+        </footer>
+      </div>
+  );
+}
+
+export default App;
+
+```
 
 ## OUTPUT
 
